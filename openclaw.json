@@ -1,0 +1,53 @@
+{
+  "$schema": "https://openclaw.ai/schema/openclaw.json",
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "shivai": {
+        "api": "openai-completions",
+        "baseUrl": "https://shiv-aiserver.onrender.com/v1",
+        "apiKey": "shivai-production-key-2026",
+        "authHeader": false,
+        "headers": {
+          "x-api-key": "shivai-production-key-2026"
+        },
+        "models": [
+          {
+            "id": "shiv-ai-v2",
+            "name": "SHIV AI v2",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "shivai/shiv-ai-v2"
+      },
+      "models": {
+        "shivai/shiv-ai-v2": {
+          "alias": "SHIV AI v2"
+        }
+      }
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "bind": "lan",
+    "port": 10000,
+    "auth": {
+      "mode": "token",
+      "token": "shivai-gateway-secret-2026"
+    },
+    "controlUi": {
+      "enabled": true
+    }
+  }
+}

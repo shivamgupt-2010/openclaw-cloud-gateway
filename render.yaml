@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: openclaw-gateway
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: Dockerfile
+    dockerContext: .
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: GATEWAY_TOKEN
+        generateValue: false
+        value: shivai-gateway-secret-2026
+      - key: NODE_ENV
+        value: production
+      - key: NODE_OPTIONS
+        value: "--max-old-space-size=280"
